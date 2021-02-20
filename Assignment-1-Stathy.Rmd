@@ -1,0 +1,201 @@
+---
+title: "Assignment-1-Stathy"
+author: "Stathy Touloumis"
+date: "1/24/2021"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Assignment 1
+
+## 1.1 Data Wrangling
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+# This is a code comment; when you run this chunk by clicking the green arrow or clt + enter, R will ignore any comment text
+
+# Uncomment this command to install tidyverse. You can also install the tidyverse via the package tab on the right in RStudio 
+install.packages("tidyverse")
+# The janitor package is used for cleaning column names (explained later in this document)
+install.packages("janitor")
+library(janitor)
+# skimr is a helper package for inspecting missing values
+install.packages("skimr")
+library(skimr)
+library(tidyverse)
+```
+
+```{r, warning=FALSE}
+# Ignore the few parsing errors you see here
+df_sandy <- read_csv("data/sandyrelated.csv")
+
+# Preview data and datatypes
+df_sandy %>% glimpse()
+```
+
+```{r}
+# Clean column names, etc
+df_sandy_clean <- df_sandy %>% 
+  janitor::clean_names()
+
+# names prints the column names of the data frame
+df_sandy_clean %>% names
+```
+
+```{r}
+# data set and pipe to next cmd
+df_sandy_clean %>% 
+select(contains("address")) %>% 
+mutate(
+    incident_address_clean = str_to_title( str_trim(incident_address) ),
+    school_address_clean = str_to_title( str_trim(school_address) )
+    )
+
+df_sandy_clean %>% 
+select(contains("street")) %>% 
+mutate(
+    street_name_clean = str_to_title( str_trim(street_name) ),
+    cross_street_1_clean = str_to_title( str_trim(cross_street_1) ),
+    cross_street_2_clean = str_to_title( str_trim(cross_street_2) )
+    )
+
+df_sandy_clean %>%
+select(contains("city"), contains("borough")) %>% 
+mutate(
+    city_clean = str_to_title( str_trim(city) ),
+    borough_clean = str_to_title( str_trim(borough) )
+    )
+
+```
+
+```{r}
+# identify data series with NA values, remove ones with majority NA
+df_sandy_clean %>% 
+  filter_all(any_vars(. == "N/A" | . == "Unspecified"))
+```
+
+```{r}
+df_sandy_na_fixed <- df_sandy_clean %>% 
+mutate(
+  facility_type = ifelse(
+    facility_type == "N/A" | facility_type == "Unspecified",
+    NA,
+    facility_type ),
+  park_facility_name = ifelse(
+    park_facility_name == "N/A" | park_facility_name == "Unspecified",
+    NA,
+    park_facility_name ),
+  school_name = ifelse(
+    school_name == "N/A" | school_name == "Unspecified",
+    NA,
+    school_name )
+)
+```
+
+```{r}
+# Columns_missing_most_data is a list of all the columns that were missing more than 50% of their rows. We can use this list to remove these columns in the subsequent code block
+cols_w_most_na <- df_sandy_na_fixed %>%
+summarise(
+  across( everything(), ~ skimr::n_missing(.x) ) ) %>%
+
+pivot_longer(
+  cols = everything(),
+  names_to = "variable",
+  values_to = "missing_count" ) %>% 
+
+mutate(
+  proportion_missing = round( missing_count / nrow(df_sandy_clean), 2) ) %>% 
+arrange( desc(missing_count) ) %>% 
+# Detect columns that were missing more than 50% of the data
+filter( proportion_missing > .5 ) %>% 
+pull(variable)
+
+print( message("[stathy] Cols with 50%+ NA:") )
+cols_w_most_na
+```
+
+```{r}
+# A minus sign in front of a column name or list of columns removes it from the data frame
+df_sandy_na_fixed %>% 
+  select(-cols_w_most_na)
+```
+
+### d. Title case
+
+Convert the City column to title case. Follow the same approach in step b to solve this questions.
+
+```{r}
+# Write your code below
+df_sandy_clean %>%
+select(contains("city"), contains("borough"), contains("community")) %>% 
+mutate(
+    city_clean = str_to_title( str_trim(city) ),
+    borough_clean = str_to_title( str_trim(borough) ),
+    community_board_clean = str_to_title( str_trim(community_board) )
+    )
+```
+
+***
+## 1.2 EER Diagram
+
+![Updated EER Diagram](./eer_updates-stathy.png)
+***
+
+![Payment Table Cardinality](./payment_table_cardinality.png)
+
+
+***
+
+## 1.3 Relational Algebra
+
+*a. List all payments greater than and equal to '2' and less than equal to '7'*
+
+**σ amount >= 2 ^ amount <= 7 (payments)**
+
+*b. List all the movies with title and description that are rated PG-13*
+
+**π title, description (σ rating = 'PG-13' (film))**
+
+*c. Replace the word “film” with “movie” for all attributes and relations starting with the word “film”*
+
+**ρ movie(movie_id) π film_id(σ Condition(film))**
+
+**ρ movie_text(movie_id) π film_id(σ Condition(film_text))**
+
+**ρ movie_actor(movie_id) π film_id(σ Condition(film_actor))**
+
+*d. List all customer names who have returned their rentals in the current month*
+
+**π first_name, last_name (customer) ⋈ (σ return_date = 'January'(rental))**
+
+***
+
+## 1.4 Normalization
+
+*a. For the table below, provide examples of insertion, deletion, and modification anomalies.*
+
+ 1. **'Helen Pearson' Physician updates will require multiple row updates**
+
+ 2. **New patient insertion may create anomoly in physician details**
+
+ 3. **'Jill Bell' Patient updates will require multiple row updates**
+
+ 4. **'Huron Street, Chicago' Patient Address updates will require multiple row updates**
+
+*b. Normalize this data to 3NF and list any assumptions made during the normalization process.*
+
+```{r}
+library(readxl)
+df1 <- read_xlsx(path="./Assignment1-Normalization.xlsx", sheet=1)
+df1 %>% glimpse()
+
+df2 <- read_xlsx(path="./Assignment1-Normalization.xlsx", sheet=2)
+df2 %>% glimpse()
+
+df3 <- read_xlsx(path="./Assignment1-Normalization.xlsx", sheet=3)
+df3 %>% glimpse()
+```

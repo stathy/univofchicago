@@ -1,0 +1,173 @@
+---
+title: "Team 7"
+author: "Stathy Touloumis"
+date: "2/14/2021"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+# install.packages("tidyverse")
+# install.packages("janitor")
+# install.packages("skimr")
+# install.packages("RMySQL")
+# install.packages("keyring")
+# install.packages("odbc")
+# library(keyring)
+library(RMySQL)
+library(odbc)
+library(tidyverse)
+library(janitor)
+library(skimr)
+```
+
+## 1.1 Schema Creation
+```{r}
+service_mysql <- "r-mysql"
+username_mysql <- "root"
+
+conn_team7 <- dbConnect(
+  MySQL(),
+  user = username_mysql,
+  password = rstudioapi::askForPassword("Database password"),
+  dbname = "sys",
+  host = "localhost"
+)
+```
+
+```{sql connection=conn_team7}
+CREATE SCHEMA IF NOT EXISTS `team7` DEFAULT CHARACTER SET utf8
+```
+
+```{sql connection=conn_team7}
+USE team7
+```
+
+```{sql connection=conn_team7}
+DROP TABLE IF EXISTS food_resources
+```
+
+```{sql connection=conn_team7}
+DROP TABLE IF EXISTS food_resource_type
+```
+
+```{sql connection=conn_team7}
+DROP TABLE IF EXISTS population
+```
+
+```{sql connection=conn_team7}
+DROP TABLE IF EXISTS community_statistics
+```
+
+```{sql connection=conn_team7}
+DROP TABLE IF EXISTS location
+```
+
+```{sql connection=conn_team7}
+DROP TABLE IF EXISTS community_areas
+```
+
+```{sql connection=conn_team7}
+CREATE TABLE IF NOT EXISTS `community_areas` (
+  `cca_id` INT NOT NULL AUTO_INCREMENT,
+  `area_name` VARCHAR(50) NULL,
+  PRIMARY KEY (`cca_id`),
+  UNIQUE INDEX `cca_id_UNIQUE` (`cca_id` ASC) VISIBLE)
+```
+
+```{sql connection=conn_team7}
+CREATE TABLE IF NOT EXISTS `location` (
+  `zipcode` INT NOT NULL,
+  `area_id` INT NOT NULL,
+  `food_res_score` INT NULL,
+  `food_bank_score` INT NULL,
+  `econ_score` INT NULL,
+  `risk_score` INT NULL,
+  `final_score` INT NULL,
+  PRIMARY KEY (`zipcode`),
+  UNIQUE INDEX `address_id_UNIQUE` (`zipcode` ASC) VISIBLE,
+  INDEX `area_FK_idx` (`area_id` ASC) VISIBLE,
+  CONSTRAINT `area_FK`
+    FOREIGN KEY (`area_id`)
+    REFERENCES `community_areas` (`cca_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+```
+
+```{sql connection=conn_team7}
+CREATE TABLE IF NOT EXISTS `community_statistics` (
+  `comm_stats_id` INT NOT NULL AUTO_INCREMENT,
+  `cca_id` INT NOT NULL,
+  `perc_below_poverty` DECIMAL(16,2) NULL,
+  `perc_adult_unemployed` DECIMAL(16,2) NULL,
+  `perc_adult_no_high_school` DECIMAL(16,2) NULL,
+  `perc_housing_crowded` DECIMAL(16,2) NULL,
+  `per_capita_income` DECIMAL(16,2) NULL,
+  `hardship_index` INT NULL,
+  PRIMARY KEY (`comm_stats_id`),
+  UNIQUE INDEX `comm_stats_id_UNIQUE` (`comm_stats_id` ASC) VISIBLE,
+  INDEX `area_fk_idx` (`cca_id` ASC) VISIBLE,
+  UNIQUE INDEX `cca_id_UNIQUE` (`cca_id` ASC) VISIBLE,
+  CONSTRAINT `area_comm_stats_fk`
+    FOREIGN KEY (`cca_id`)
+    REFERENCES `community_areas` (`cca_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+```
+
+```{sql connection=conn_team7}
+CREATE TABLE IF NOT EXISTS `population` (
+  `population_id` INT NOT NULL AUTO_INCREMENT,
+  `year` INT NOT NULL,
+  `zipcode` INT NOT NULL,
+  `population` INT NULL,
+  `pop_density` INT NULL,
+  `age_start` INT NULL,
+  `age_end` INT NULL,
+  `race` VARCHAR(50) NULL,
+  PRIMARY KEY (`population_id`),
+  UNIQUE INDEX `population_id_UNIQUE` (`population_id` ASC) VISIBLE,
+  CONSTRAINT `zipcode_pop_FK`
+    FOREIGN KEY (`zipcode`)
+    REFERENCES `location` (`zipcode`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+```
+
+```{sql connection=conn_team7}
+CREATE TABLE IF NOT EXISTS `food_resource_type` (
+  `res_type_id` INT NOT NULL AUTO_INCREMENT,
+  `res_type` VARCHAR(45) NULL,
+  PRIMARY KEY (`res_type_id`),
+  UNIQUE INDEX `res_type_id_UNIQUE` (`res_type_id` ASC) VISIBLE)
+```
+
+```{sql connection=conn_team7}
+CREATE TABLE IF NOT EXISTS `food_resources` (
+  `res_id` INT NOT NULL AUTO_INCREMENT,
+  `res_name` VARCHAR(255) NULL,
+  `res_type_id` INT NULL,
+  `lat` DOUBLE NULL,
+  `long` DOUBLE NULL,
+  `loc` VARCHAR(45) NULL,
+  `zipcode` INT NOT NULL,
+  PRIMARY KEY (`res_id`),
+  INDEX `food_zipcode_FK_idx` (`zipcode` ASC) VISIBLE,
+  INDEX `store_type_FK_idx` (`res_type_id` ASC) VISIBLE,
+  UNIQUE INDEX `res_id_UNIQUE` (`res_id` ASC) VISIBLE,
+  CONSTRAINT `zipcode_food_res_FK`
+    FOREIGN KEY (`zipcode`)
+    REFERENCES `location` (`zipcode`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `store_type_FK`
+    FOREIGN KEY (`res_type_id`)
+    REFERENCES `food_resource_type` (`res_type_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+```

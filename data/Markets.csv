@@ -1,0 +1,105 @@
+﻿Primary Key,NAME,TYPE,lat,long,loc,ZIP,TYPE NAME
+1,CBS Food Pantry,5,,,,60804,Food Bank
+2,Food Distribution Center - Care and Share Food Pantry,5,,,,60624,Food Bank
+3,Food Distribution Center - Carey Temple AME Food Pantry,5,,,,60619,Food Bank
+4,Food Distribution Center - Carlene S. Lilly Seed of Hope Food Pantry,5,,,,60619,Food Bank
+5,Food Distribution Center - Chicago Roseland Coalition,5,,,,60619,Food Bank
+6,Food Distribution Center - Ebenezer Food Pantry (IL),5,,,,60402,Food Bank
+7,Food Distribution Center - First Presbyterian: Kimbark Pantry,5,,,,60637,Food Bank
+8,Food Distribution Center - God's Gang,5,,,,60628,Food Bank
+9,Food Distribution Center - Hope Food Pantry,5,,,,60651,Food Bank
+10,Food Distribution Center - Irving Park Community Food Pantry,5,,,,60641,Food Bank
+11,Food Distribution Center - Jesus Christ Food Pantry,5,,,,60629,Food Bank
+12,Food Distribution Center - Jireh Food Pantry,5,,,,60623,Food Bank
+13,Food Distribution Center - Lakeview Pantry (Oakdale),5,,,,60657,Food Bank
+14,Food Distribution Center - Operation Blessing of Southwest Chicagoland,5,,,,60445,Food Bank
+15,Food Distribution Center - Residence Food Pantry,5,,,,60714,Food Bank
+16,Food Distribution Center - Resource Center Of Chicago,5,,,,60827,Food Bank
+17,Food Distribution Center - Saint Ailbe Men's Ministry Food Pantry,5,,,,60619,Food Bank
+18,Food Distribution Center - Saint Mark Church Food Pantry,5,,,,60622,Food Bank
+19,Food Distribution Center - Saint Martin Deporres Food Pantry,5,,,,60644,Food Bank
+20,Food Distribution Center - San Lucas Food Pantry,5,,,,60647,Food Bank
+21,Food Distribution Center - Society of Vincent DePaul: District IX Food Pantry,5,,,,60629,Food Bank
+22,Food Distribution Center - Visitation Parish Food Pantry,5,,,,60621,Food Bank
+23,Greater Chicago Food Depository,5,,,,60632,Food Bank
+24,ICNA Relief Refugee Resource Center and Food Pantry,5,,,,60659,Food Bank
+25,Marillac House Food Pantry,5,,,,60612,Food Bank
+26,Mother Jones Food Pantry,5,,,,60628,Food Bank
+27,New Hope Community Food Pantry,5,,,,60631,Food Bank
+28,Pilsen Food Pantry,5,,,,60608,Food Bank
+29,Ravenswood Community Services,5,,,,60640,Food Bank
+30,Shared Manna Food Pantry,5,,,,60628,Food Bank
+31,St Cyprian's Food Pantry,5,,,,60634,Food Bank
+32,The Village Pantry,5,,,,60805,Food Bank
+33,Maple Morgan Park Food Pantry,5,,,,60643,Food Bank
+34,not populated,4,41.83322271,-87.66102208,"(41.83322271, -87.66102208)",60608,Urban Farm
+35,not populated,4,41.89661725,-87.64044485,"(41.89661725, -87.64044485)",60654,Urban Farm
+36,not populated,4,41.76564492,-87.61847785,"(41.76564492, -87.61847785)",60619,Urban Farm
+37,not populated,4,41.7885099,-87.66929524,"(41.7885099, -87.66929524)",60636,Urban Farm
+38,not populated,4,41.86714301,-87.65442626,"(41.86714301, -87.65442626)",60608,Urban Farm
+39,not populated,4,41.81444995,-87.63587876,"(41.81444995, -87.63587876)",60609,Urban Farm
+40,not populated,4,41.88831522,-87.70648607,"(41.88831522, -87.70648607)",60612,Urban Farm
+41,not populated,4,41.79090671,-87.62786143,"(41.79090671, -87.62786143)",60621,Urban Farm
+42,not populated,4,41.81460224,-87.62637112,"(41.81460224, -87.62637112)",60609,Urban Farm
+43,not populated,4,41.7337305,-87.5513461,"(41.7337305, -87.5513461)",60617,Urban Farm
+44,not populated,4,41.65925479,-87.60742878,"(41.65925479, -87.60742878)",60628,Urban Farm
+45,not populated,3,41.89557507,-87.63254328,"(41.89557507, -87.63254328)",60654,Produce Cart
+46,not populated,3,41.90323582,-87.66755407,"(41.90323582, -87.66755407)",60622,Produce Cart
+47,not populated,3,41.83111927,-87.6267791,"(41.83111927, -87.6267791)",60609,Produce Cart
+48,not populated,3,41.96547764,-87.65768753,"(41.96547764, -87.65768753)",60640,Produce Cart
+49,not populated,3,41.90967936,-87.67759021,"(41.90967936, -87.67759021)",60622,Produce Cart
+50,not populated,3,41.84466604,-87.70254001,"(41.84466604, -87.70254001)",60623,Produce Cart
+51,not populated,3,41.86824605,-87.71316125,"(41.86824605, -87.71316125)",60624,Produce Cart
+52,not populated,3,41.89658176,-87.62708766,"(41.89658176, -87.62708766)",60611,Produce Cart
+53,not populated,3,41.86131724,-87.69575486,"(41.86131724, -87.69575486)",60608,Produce Cart
+54,not populated,3,41.91822458,-87.65272001,"(41.91822458, -87.65272001)",60614,Produce Cart
+55,not populated,3,41.85307985,-87.71965154,"(41.85307985, -87.71965154)",60623,Produce Cart
+56,not populated,3,41.83681334,-87.7304274,"(41.83681334, -87.7304274)",60623,Produce Cart
+57,not populated,3,41.84323835,-87.69476454,"(41.84323835, -87.69476454)",60608,Produce Cart
+58,not populated,3,41.84435111,-87.72545519,"(41.84435111, -87.72545519)",60623,Produce Cart
+59,not populated,2,41.8533645,-87.7192132,"(41.8533645, -87.7192132)",60623,Farmers Market
+60,not populated,2,41.9780083,-87.6683433,"(41.9780083, -87.6683433)",60640,Farmers Market
+61,not populated,2,41.956796,-87.767046,"(41.956796, -87.767046)",60634,Farmers Market
+62,not populated,2,41.8578656,-87.6611589,"(41.8578656, -87.6611589)",60608,Farmers Market
+63,not populated,2,41.87263635,-87.76501013,"(41.87263635, -87.76501013)",60644,Farmers Market
+64,not populated,2,41.95597563,-87.67910157,"(41.95597563, -87.67910157)",60618,Farmers Market
+65,not populated,2,41.87228245,-87.6291295,"(41.87228245, -87.6291295)",60605,Farmers Market
+66,not populated,2,41.8848705,-87.7062339,"(41.8848705, -87.7062339)",60612,Farmers Market
+67,not populated,2,41.8848705,-87.7062339,"(41.8848705, -87.7062339)",60612,Farmers Market
+68,not populated,2,41.96648354,-87.68874981,"(41.96648354, -87.68874981)",60625,Farmers Market
+69,not populated,2,41.90392319,-87.62998609,"(41.90392319, -87.62998609)",60610,Farmers Market
+70,not populated,2,41.90504906,-87.75555328,"(41.90504906, -87.75555328)",60651,Farmers Market
+71,not populated,2,41.918257,-87.646017,"(41.918257, -87.646017)",60614,Farmers Market
+72,not populated,2,41.88784113,-87.76525281,"(41.88784113, -87.76525281)",60644,Farmers Market
+73,not populated,2,41.88346159,-87.63001202,"(41.88346159, -87.63001202)",60602,Farmers Market
+74,not populated,2,41.87912229,-87.62961735,"(41.87912229, -87.62961735)",60604,Farmers Market
+75,not populated,2,41.69182489,-87.61006528,"(41.69182489, -87.61006528)",60628,Farmers Market
+76,not populated,2,41.87734375,-87.63661967,"(41.87734375, -87.63661967)",60606,Farmers Market
+77,not populated,2,41.89527979,-87.71657105,"(41.89527979, -87.71657105)",60651,Farmers Market
+78,not populated,2,41.765042,-87.6541122,"(41.765042, -87.6541122)",60621,Farmers Market
+79,not populated,2,41.7536343,-87.7331374,"(41.7536343, -87.7331374)",60652,Farmers Market
+80,not populated,2,41.8451793,-87.6180851,"(41.8451793, -87.6180851)",60616,Farmers Market
+81,not populated,2,41.7895449,-87.627372,"(41.7895449, -87.627372)",60621,Farmers Market
+82,not populated,2,41.8013958,-87.6123864,"(41.8013958, -87.6123864)",60615,Farmers Market
+83,not populated,2,41.9149395,-87.6342005,"(41.9149395, -87.6342005)",60614,Farmers Market
+84,not populated,2,41.920092,-87.6619038,"(41.920092, -87.6619038)",60614,Farmers Market
+85,not populated,2,41.787897,-87.669475,"(41.787897, -87.669475)",60636,Farmers Market
+86,not populated,2,41.8557577,-87.6243496,"(41.8557577, -87.6243496)",60616,Farmers Market
+87,not populated,2,41.9668208,-87.6875001,"(41.9668208, -87.6875001)",60625,Farmers Market
+88,not populated,2,42.0083615,-87.6663239,"(42.0083615, -87.6663239)",60626,Farmers Market
+89,not populated,2,41.78407,-87.590568,"(41.78407, -87.590568)",60637,Farmers Market
+90,not populated,2,41.9279548,-87.7052487,"(41.9279548, -87.7052487)",60647,Farmers Market
+91,not populated,2,41.9080486,-87.676738,"(41.9080486, -87.676738)",60622,Farmers Market
+92,not populated,2,41.7366468,-87.6072612,"(41.7366468, -87.6072612)",60619,Farmers Market
+93,not populated,2,41.960554,-87.6977103,"(41.960554, -87.6977103)",60618,Farmers Market
+94,not populated,2,42.0008961,-87.6607393,"(42.0008961, -87.6607393)",60626,Farmers Market
+95,not populated,2,42.0008961,-87.6607393,"(42.0008961, -87.6607393)",60626,Farmers Market
+96,not populated,2,41.9676712,-87.7625765,"(41.9676712, -87.7625765)",60630,Farmers Market
+97,not populated,2,41.8578369,-87.6469366,"(41.8578369, -87.6469366)",60608,Farmers Market
+98,not populated,2,41.9149395,-87.6342005,"(41.9149395, -87.6342005)",60614,Farmers Market
+99,not populated,2,41.943836,-87.66392,"(41.943836, -87.66392)",60657,Farmers Market
+100,not populated,2,41.943836,-87.66392,"(41.943836, -87.66392)",60657,Farmers Market
+101,not populated,2,41.9664324,-87.6493557,"(41.9664324, -87.6493557)",60640,Farmers Market
+102,not populated,2,41.9918134,-87.6603395,"(41.9918134, -87.6603395)",60660,Farmers Market
+103,not populated,2,41.686898,-87.621256,"(41.686898, -87.621256)",60628,Farmers Market
+104,not populated,2,41.88679,-87.6475031,"(41.88679, -87.6475031)",60607,Farmers Market
